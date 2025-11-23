@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  database:
+    image: postgres:15
+    container_name: careconnect-db
+    restart: always
+    environment:
+      POSTGRES_DB: careconnect
+      POSTGRES_USER: careconnect_user
+      POSTGRES_PASSWORD: careconnect_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - careconnect-network
+
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: careconnect-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://careconnect_user:careconnect_pass@database:5432/careconnect
+      - TWILIO_ACCOUNT_SID=your_twilio_sid
+      - TWILIO_AUTH_TOKEN=your_twilio_token
+      - TWILIO_PHONE_NUMBER=your_twilio_number
+    depends_on:
+      - database
+    networks:
+      - careconnect-network
+
+  # Frontend React App
+  frontend:
+    build:
+      context: ./frontend/react-dashboard
+      dockerfile: Dockerfile.frontend
+    container_name: careconnect-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - careconnect-network
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: careconnect-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - careconnect-network
+
+volumes:
+  postgres_data:
+
+networks:
+  careconnect-network:
+    driver: bridge

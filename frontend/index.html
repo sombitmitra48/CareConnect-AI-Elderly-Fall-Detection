@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareConnect - AI Guardian for the Elderly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>🏥 CareConnect</h1>
+            <p>AI Guardian for the Elderly</p>
+        </div>
+        <div class="user-info">
+            <span id="status" class="status">Connecting...</span>
+            <button class="btn btn-secondary" id="settingsBtn">⚙️ Settings</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h2>System Overview</h2>
+            <div class="status-grid">
+                <div class="status-card">
+                    <h3>📹 Video Detection</h3>
+                    <p class="status-indicator status-warning">Limited (MediaPipe not available)</p>
+                </div>
+                <div class="status-card">
+                    <h3>🔊 Audio Detection</h3>
+                    <p class="status-indicator status-active">Active</p>
+                </div>
+                <div class="status-card">
+                    <h3>🚨 Alert System</h3>
+                    <p class="status-indicator status-active">Active</p>
+                </div>
+                <div class="status-card">
+                    <h3>🤖 AI Assistant</h3>
+                    <p class="status-indicator status-active">Active</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="detection-section">
+            <h2>Fall Detection</h2>
+            <div class="detection-controls">
+                <button class="btn btn-primary" id="toggleDetection">▶ Start Detection</button>
+                <div class="detection-info">
+                    <p>Audio-based detection is active. Video detection is limited due to missing MediaPipe.</p>
+                </div>
+            </div>
+            <div class="detection-feed">
+                <div class="video-placeholder">
+                    <p>📹 Video Feed (Unavailable)</p>
+                    <p class="warning">MediaPipe not available on this system</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="emergency-section">
+            <h2>Emergency Response</h2>
+            <div class="response-team">
+                <div class="team-member">
+                    <div class="member-icon">👨‍⚕️</div>
+                    <div class="member-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p>General Practitioner</p>
+                        <p class="distance">0.8 km away</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-icon">👩‍⚕️</div>
+                    <div class="member-info">
+                        <h3>Nurse Michael Chen</h3>
+                        <p>Home Healthcare</p>
+                        <p class="distance">1.2 km away</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-icon">👨‍🔧</div>
+                    <div class="member-info">
+                        <h3>Volunteer Raj Patel</h3>
+                        <p>Community Helper</p>
+                        <p class="distance">0.5 km away</p>
+                    </div>
+                </div>
+            </div>
+            <button class="emergency-button" id="emergencyBtn">🚨 Emergency Call</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CareConnect - AI Guardian for the Elderly. All rights reserved.</p>
+        <p class="disclaimer">This system provides automated monitoring but should not replace human care.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

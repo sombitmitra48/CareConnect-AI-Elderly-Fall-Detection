@@ -1,0 +1,2 @@
+[console_scripts]
+careconnect = run:main

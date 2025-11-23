@@ -1,0 +1,9 @@
+README.md
+setup.py
+careconnect.egg-info/PKG-INFO
+careconnect.egg-info/SOURCES.txt
+careconnect.egg-info/dependency_links.txt
+careconnect.egg-info/entry_points.txt
+careconnect.egg-info/requires.txt
+careconnect.egg-info/top_level.txt
+tests/test_api.py

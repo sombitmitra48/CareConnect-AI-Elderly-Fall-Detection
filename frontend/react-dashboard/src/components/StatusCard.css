@@ -1,0 +1,33 @@
+.status-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.status-card h2 {
+  margin-bottom: 15px;
+  color: #4a5568;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.status-indicator.active .status-dot {
+  background-color: #48bb78;
+  box-shadow: 0 0 10px #48bb78;
+}
+
+.status-indicator.inactive .status-dot {
+  background-color: #e53e3e;
+}

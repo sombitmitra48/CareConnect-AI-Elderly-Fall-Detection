@@ -1,0 +1,40 @@
+.detection-view {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.detection-view h2 {
+  margin-bottom: 15px;
+  color: #4a5568;
+}
+
+.video-container {
+  background-color: #2d3748;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.video-placeholder {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #a0aec0;
+}
+
+.camera-icon {
+  font-size: 3rem;
+  margin-top: 10px;
+}
+
+.detection-status {
+  text-align: center;
+  padding: 15px;
+  background-color: #f0fff4;
+  border-radius: 8px;
+  color: #38a169;
+}

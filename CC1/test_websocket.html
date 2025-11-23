@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <h1>WebSocket Connection Test</h1>
+    <div id="status">Connecting...</div>
+    <div id="messages"></div>
+    
+    <script>
+        const statusElement = document.getElementById('status');
+        const messagesElement = document.getElementById('messages');
+        
+        // Try to connect to WebSocket on port 8001
+        const ws = new WebSocket('ws://127.0.0.1:8001/');
+        
+        ws.onopen = function(event) {
+            statusElement.innerHTML = '<span style="color: green;">Connected!</span>';
+            messagesElement.innerHTML += '<p>WebSocket connected successfully</p>';
+            
+            // Send a test message
+            ws.send(JSON.stringify({
+                type: 'register_client',
+                client_id: 'browser_test_client'
+            }));
+            messagesElement.innerHTML += '<p>Sent registration message</p>';
+        };
+        
+        ws.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            messagesElement.innerHTML += `<p>Received: ${event.data}</p>`;
+        };
+        
+        ws.onclose = function(event) {
+            statusElement.innerHTML = '<span style="color: red;">Disconnected</span>';
+            messagesElement.innerHTML += '<p>WebSocket connection closed</p>';
+        };
+        
+        ws.onerror = function(error) {
+            statusElement.innerHTML = '<span style="color: red;">Error</span>';
+            messagesElement.innerHTML += `<p>WebSocket error: ${error}</p>`;
+            console.error('WebSocket error:', error);
+        };
+    </script>
+</body>
+</html>
